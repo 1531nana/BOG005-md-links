@@ -1,29 +1,43 @@
 const fs = require("fs");
+const fsPromises = require("fs").promises;
 const Path = require("path");
-const {mdLinks} = require('./modulo.js')
-
-
+const { mdLinks } = require("./modulo.js");
+const { readLinks, readText } = require("./readLinks.js");
+const fetch = require('node-fetch');
 
 let readFile = (newPath, options) => {
-    fs.readFile(newPath, "utf-8", (error, data) => {
-      if (error) {
-        console.log("Hay un error");
+  if (Path.extname(newPath) == ".md") {
+    let acum = [];
+    fs.readFile(newPath, "utf8", (err, data) => {
+      if (err) {
+        console.log("error en readfile ", err);
       } else {
-          if(Path.extname(newPath) == ".md"){
-              console.log("soy un archivo md ", newPath, data);
-            //   readLinks(newPath)
-              return newPath
-          }
-          else{
-            return
-              // console.log('No hay archivos .md para analizar ', data)
-          }
+        Promise.all([readLinks(data)])
+          .then((res) => {
+            // fetch(res).then(resp => console.log('fetch ', resp))
+            readText(data).then((ele) => {
+              for (let i = 0; i < ele.length; i++) {
+                acum.push({
+                  href: res.map((link) => {
+                        fetch(link[i]).then(resp => console.log('fetch ', resp.status))
+                        .catch((error) => console.log(error.message))
+                    return link[i].slice(0, 51);
+                  }),
+                  text: ele[i].slice(1, ele[i].indexOf("]")),
+                  file: newPath,
+                });
+              }
+              console.log("acum ", acum);
+            });
+          });
       }
     });
-  };
-
-
-  
-  module.exports = {
-    readFile
   }
+};
+
+
+
+module.exports = {
+  readFile,
+  fetch
+};
