@@ -1,38 +1,35 @@
 const fs = require("fs");
 const Path = require("path");
-const { readFile } = require("./readFile.js");
-const { mdlinks } = require("./modulo.js");
 
-let readdirec = (newPath) => {
-  //mira es un directorio
+let readdirec = (path) => {
   let arreglo = [];
-  if (Path.extname(newPath) == "") {
+  let newPath;
+  if (path == undefined) {
+    throw Error("Debe ingresar una ruta");
+  } else if (!Path.isAbsolute(path)) {
+    newPath = Path.resolve(__dirname, path);
+  } else {
+    newPath = path;
+  }
+  //mira es un directorio
+  if (Path.extname(newPath) == ".md" && fs.statSync(newPath).isFile()) {
+    arreglo.push(newPath);
+  } else {
     let direc = fs.readdirSync(newPath);
     //itera sobre cada elemento
-    direc.forEach((elementos) => {
+    direc.forEach((elemento) => {
       //junto la ruta
-      elementos = Path.join(newPath, elementos);
-      //miro si el elemento no tiene extensión
-      if (Path.extname(elementos) == "") {
-        console.log("Estoy sin extensión ", elementos);
-        fs.stat(elementos, (error, data) => {
-          if (error) {
-            return console.log("Hubo un error ", error);
-          } else {
-            if (Path.extname(elementos) == "" && data.isDirectory() == false) {
-              return console.log("Esto no es un archivo .md");
-            } else {
-              // elementos = data
-              console.log("data, elemetos ", elementos);
-              readdirec(elementos);
-            }
-          }
-        });
+      elemento = Path.join(newPath, elemento);
+      if (fs.statSync(elemento).isDirectory()) {
+        arreglo = readdirec(elemento).concat(arreglo);
+      } else if (Path.extname(elemento) == ".md") {
+        arreglo.push(elemento);
       } else {
-        readFile(elementos);
+        return
       }
     });
   }
+  return arreglo
 };
 
 module.exports = {
