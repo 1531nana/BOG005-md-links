@@ -11,10 +11,11 @@ let readdirec = (path) => {
   } else {
     newPath = path;
   }
-  //mira es un directorio
-  if (Path.extname(newPath) == ".md" && fs.statSync(newPath).isFile()) {
-    arreglo.push(newPath);
-  } else {
+  //comprueba si es archivo .md
+  // if (Path.extname(newPath) == ".md" && fs.statSync(newPath).isFile()) {
+  //   arreglo.push(newPath);
+  // } 
+  // else {
     let direc = fs.readdirSync(newPath);
     //itera sobre cada elemento
     direc.forEach((elemento) => {
@@ -28,7 +29,7 @@ let readdirec = (path) => {
         return
       }
     });
-  }
+  // }
   return arreglo
 };
 
