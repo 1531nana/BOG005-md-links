@@ -4,10 +4,8 @@ const { readFileOptions } = require("./readFileOption");
 // const {validate} = require('./validate')
 
 let mdLinks = (path, options = {validate: false}) => {
-  // let resultFetch;
-  let linksMd;
   let arrayMd = readdirec(path)
-  linksMd = readFile(arrayMd).then(res => {return linksMd = (res[0].flat())})
+  let linksMd = readFile(arrayMd).then(res => {return linksMd = (res[0].flat())})
   return new Promise ((resolve, reject) =>{
    if(options.validate == false){
     // if(!options.validate){
@@ -15,7 +13,10 @@ let mdLinks = (path, options = {validate: false}) => {
   (resolve(linksMd))
   }else if(options.validate === true){
       // resultFetch = resolve(readFileOptions(linksMd))
-      readFileOptions(linksMd)
+    resolve(readFileOptions(linksMd))
+    // .then((res) => {
+    //   res.map(value => value.map(link => link.then(resul => console.log(resolve(resul)))))})
+      // .then(res => {console.log('mdlink ',resolve(res))})
       // validate(resultFetch)
     }
   })
