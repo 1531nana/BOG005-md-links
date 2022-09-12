@@ -11,26 +11,19 @@ let readdirec = (path) => {
   } else {
     newPath = path;
   }
-  //comprueba si es archivo .md
-  // if (Path.extname(newPath) == ".md" && fs.statSync(newPath).isFile()) {
-  //   arreglo.push(newPath);
-  // } 
-  // else {
-    let direc = fs.readdirSync(newPath);
-    //itera sobre cada elemento
-    direc.forEach((elemento) => {
-      //junto la ruta
-      elemento = Path.join(newPath, elemento);
-      if (fs.statSync(elemento).isDirectory()) {
-        arreglo = readdirec(elemento).concat(arreglo);
-      } else if (Path.extname(elemento) == ".md") {
-        arreglo.push(elemento);
-      } else {
-        return
-      }
-    });
-  // }
-  return arreglo
+  let direc = fs.readdirSync(newPath);
+  direc.forEach((elemento) => {
+    //junto la ruta
+    elemento = Path.join(newPath, elemento);
+    if (fs.statSync(elemento).isDirectory()) {
+      arreglo = readdirec(elemento).concat(arreglo);
+    } else if (Path.extname(elemento) == ".md") {
+      arreglo.push(elemento);
+    } else {
+      return;
+    }
+  });
+  return arreglo;
 };
 
 module.exports = {

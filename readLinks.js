@@ -1,4 +1,3 @@
-
 let regExpLinks = new RegExp(
   "((https?://)|(https?://)).?[a-zA-Z0-9-_.]+/([a-zA-Z0-9-_./?=#]?)+",
   "g"
@@ -26,7 +25,6 @@ let readText = (newPath, options) => {
     }
   });
 };
-
 
 module.exports = {
   readLinks,

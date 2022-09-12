@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
 const { mdLinks } = require("./modulo");
-const { readFileOptions } = require("./readFileOption");
-const { stat } = require("./stats");
-const [, , ...args] = process.argv;
 // const { readFileOptions } = require("./readFileOption");
+const { stat, broken } = require("./stats");
+const [, , ...args] = process.argv;
 
 let validate = (args) => {
   new Promise((resolve, reject) => {
@@ -12,31 +11,32 @@ let validate = (args) => {
       (args[1] === "--validate" && args[2] === "--stats") ||
       (args[1] === "--stats" && args[2] === "--validate")
     ) {
-      console.log("estamos los dos");
+      stat(mdLinks(args[0], { validate: true })).then(
+        (res) => console.log(res),
+        broken(mdLinks(args[0], { validate: true })).then((res) =>
+          console.log(res)
+        )
+      );
     } else if (args[1] === "--stats") {
       stat(mdLinks(args[0], { validate: true })).then((res) =>
         console.log(res)
       );
-      // readFileOptions(mdLinks(args[0], {validate: true})).then(res => {(stat(res.href))})
-      console.log("stats");
     } else if (args[1] === "--validate") {
-      console.log("validate: true");
       mdLinks(args[0], { validate: true }).then((res) => {
-        res.map(
-          (value) =>
-            value.map((link) => link.then((resul) => console.log(resul)))
-          // value)((value) => console.log("fetch ", value));
+        res.map((value) =>
+          value.map((link) => link.then((resul) => console.log(resul)))
         );
       });
-      // resolve(mdLinks(args[0], {validate : true})).then(res => console.log('acá ',res))
-    } else {
+    } else if (args[0] && args[1] === undefined) {
       mdLinks(args[0], { validate: false }).then((res) => console.log(res));
-      // console.log("estoy en else");
+    } else {
+      console.log(`Comando incorrecto, intenta con --validate o --stats`);
     }
   });
 };
 
 validate(args);
+
 module.exports = {
   //   validate,
 };
