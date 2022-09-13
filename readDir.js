@@ -13,7 +13,6 @@ let readdirec = (path) => {
   }
   let direc = fs.readdirSync(newPath);
   direc.forEach((elemento) => {
-    //junto la ruta
     elemento = Path.join(newPath, elemento);
     if (fs.statSync(elemento).isDirectory()) {
       arreglo = readdirec(elemento).concat(arreglo);

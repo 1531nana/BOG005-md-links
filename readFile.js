@@ -1,8 +1,7 @@
 const fs = require("fs");
-const Path = require("path");
 const { readLinks, readText } = require("./readLinks.js");
 
-let fileRead = (newPath, options) => {
+let fileRead = (newPath) => {
   let acum = [];
   return Promise.all(
     newPath.map((link) => {

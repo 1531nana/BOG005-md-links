@@ -4,7 +4,7 @@ let regExpLinks = new RegExp(
 );
 let regExpText = /([\[][(\S)]+[( \S?)]+\]\(ht)+/g;
 
-let readLinks = (newPath, options) => {
+let readLinks = (newPath) => {
   return new Promise((resolve, reject) => {
     if (newPath) {
       let links = newPath.match(regExpLinks);
@@ -15,7 +15,7 @@ let readLinks = (newPath, options) => {
   });
 };
 
-let readText = (newPath, options) => {
+let readText = (newPath) => {
   return new Promise((resolve, reject) => {
     if (newPath) {
       let text = newPath.match(regExpText);
