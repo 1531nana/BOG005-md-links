@@ -12,8 +12,8 @@ let mdLinks = (path, options = { validate: false }) => {
         resolve(linksMd);
       } else if (options.validate === true) {
         readFileOptions(linksMd).then((res) => {
-          resolve(res);
-        });
+          resolve(res)})
+          .catch(err=> reject(err))
       }
     });
   });

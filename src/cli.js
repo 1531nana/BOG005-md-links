@@ -27,7 +27,10 @@ let validate = (args) => {
       mdLinks(args[0], { validate: true }).then((res) => console.log(res));
     } else if (args[0] && args[1] === undefined) {
       mdLinks(args[0], { validate: false }).then((res) => console.log(res));
-    } else {
+    } else if(args[0] === undefined){
+      throw Error('Debe ingresar una ruta')
+    }
+    else {
       console.log(`Comando incorrecto, intenta con --validate o --stats`);
     }
   });
