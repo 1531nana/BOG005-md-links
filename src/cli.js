@@ -35,6 +35,4 @@ let validate = (args) => {
 
 validate(args);
 
-module.exports = {
-  validate
-};
+module.exports = {};

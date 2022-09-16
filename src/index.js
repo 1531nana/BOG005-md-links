@@ -1,4 +1,4 @@
-const { readdirec } = require("./readDir.js");
+const { readdirec } = require("./readDir");
 const { readFile } = require("./readFile");
 const { readFileOptions } = require("./readFileOption");
 
