@@ -14,48 +14,28 @@ la información que se quiere compartir.
 
 ![md-links](https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg)
 
-## 2. Diagrama de flujo
+## 2. Diagrama de flujo de la ruta
+![path](https://github.com/1531nana/BOG005-md-links/blob/propietaria/Diagrama%20mdLinks%20path_page-0001%20path%202.0.jpg)
+
+## 2.1 Diagrama de flujo del CLI
+![CLI](https://github.com/1531nana/BOG005-md-links/blob/propietaria/Diagrama%20mdlinks%20validate.jpg)
 
 
+## 3. Plan de acción
+Este plan de acción estuvo enfocado en minimizar los problemas planteados, con estimaciones de tiempo para mayor eficacia. Y fue elaborada en el projects de GitHub, permitiendo una sincronización de la planificación con el proyecto sobre el cual estaba trabajando.
+![planeación](https://github.com/1531nana/BOG005-md-links/blob/propietaria/planeaci%C3%B3n%20md-links_page-2.0.jpg)
 
+## 1. Consideraciones técnicas
+Esta librería recibe una ruta absoluta o relativa con archivos markdown, para así extraer los links y verificar si están rotos o no. También muestra una estadística respecto a todos los links encontrados, como la cantidad total , los que están rotos y los únicos(links que no se repiten en el/los archivo/s). 
 
+El valor de entrada es una ruta absoluta "C:\Users\1531n\BOG005-md-links\README.md" o relativa "./some/example.md" 
 
-### 3. Plan de acción
-
+## 2. Instalación 
+npm install Adriana/md-links
 
 ### 1) JavaScript API
 
-El módulo debe poder **importarse** en otros scripts de Node.js y debe ofrecer la
-siguiente interfaz:
-
-#### `mdLinks(path, options)`
-
-##### Argumentos
-
-* `path`: Ruta **absoluta** o **relativa** al **archivo** o **directorio**.
-Si la ruta pasada es relativa, debe resolverse como relativa al directorio
-desde donde se invoca node - _current working directory_).
-* `options`: Un objeto con **únicamente** las siguientes propiedades:
-  - `validate`: Booleano que determina si se desea validar los links
-    encontrados.
-  - `stats`: Booleano que determina si se desea obtener un output
-    con información estadística general.
-
-Con `validate:false` :
-
-* `href`: URL encontrada.
-* `text`: Texto que aparecía dentro del link (`<a>`).
-* `file`: Ruta del archivo donde se encontró el link.
-
-Con `validate:true` :
-
-* `href`: URL encontrada.
-* `text`: Texto que aparecía dentro del link (`<a>`).
-* `file`: Ruta del archivo donde se encontró el link.
-* `status`: Código de respuesta HTTP.
-* `ok`: Mensaje `fail` en caso de fallo u `ok` en caso de éxito.
-
-#### Ejemplo (resultados como comentarios)
+El módulo se puede **importar** en otros scripts de Node.js:
 
 ```js
 const mdLinks = require("md-links");
@@ -81,12 +61,13 @@ mdLinks("./some/dir")
 
 ### 2) CLI (Command Line Interface - Interfaz de Línea de Comando)
 
-El ejecutable de nuestra aplicación debe poder ejecutarse de la siguiente
-manera a través de la **terminal**:
+En la **terminal** puede ejecutar las siguientes Lineas de Comando, de acuerdo a la información que requiera sobre su archivo markdown
 
 `md-links <path-to-file> [options]`
 
 Por ejemplo:
+
+Si solo pasamos la ruta, muestra la ruta absoluta, el link y el texto
 
 ```sh
 $ md-links ./some/example.md
@@ -99,9 +80,7 @@ $ md-links ./some/example.md
 
 ##### `--validate`
 
-Si pasamos la opción `--validate`, el módulo debe hacer una petición HTTP para
-averiguar si el link funciona o no. Si el link resulta en una redirección a una
-URL que responde ok, entonces consideraremos el link como ok.
+Si pasamos la opción `--validate`,  muestra de cada link la ruta absoluta, el link, el código de status, si el link está roto('Fail') o está bien('OK') y el texto.
 
 Por ejemplo:
 
@@ -112,14 +91,9 @@ $ md-links ./some/example.md --validate
 ./some/example.md http://google.com/ ok 301 Google
 ```
 
-Vemos que el _output_ en este caso incluye la palabra `ok` o `fail` después de
-la URL, así como el status de la respuesta recibida a la petición HTTP a dicha
-URL.
-
 ##### `--stats`
 
-Si pasamos la opción `--stats` el output (salida) será un texto con estadísticas
-básicas sobre los links.
+Si pasamos la opción `--stats` será una estadística con los links totales y únicos
 
 ```sh
 $ md-links ./some/example.md --stats
