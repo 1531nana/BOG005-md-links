@@ -31,14 +31,16 @@ Esta librería recibe una ruta absoluta o relativa con archivos markdown, para a
 El valor de entrada es una ruta absoluta "C:\Users\1531n\BOG005-md-links\README.md" o relativa "./some/example.md" 
 
 ## 2. Instalación 
-npm install Adriana/md-links
+```sh
+npm install luzadri-md-links
+```
 
 ### 1) JavaScript API
 
 El módulo se puede **importar** en otros scripts de Node.js:
 
 ```js
-const mdLinks = require("md-links");
+const {mdLinks} = require("luzadri-md-links");
 
 mdLinks("./some/example.md")
   .then(links => {
