@@ -3,7 +3,6 @@
 const { mdLinks } = require("./index");
 const { stat} = require("./stats");
 const [, , ...args] = process.argv;
-
 let validate = (args) => {
   new Promise((resolve, reject) => {
     if (
