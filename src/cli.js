@@ -4,7 +4,6 @@ const { mdLinks } = require("./index");
 const { stat} = require("./stats");
 const [, , ...args] = process.argv;
 let validate = (args) => {
-  new Promise((resolve, reject) => {
     if (
       (args[1] === "--validate" && args[2] === "--stats") ||
       (args[1] === "--stats" && args[2] === "--validate")
@@ -32,7 +31,6 @@ let validate = (args) => {
     else {
       console.log(`Comando incorrecto, intenta con --validate o --stats`);
     }
-  });
 };
 
 validate(args);

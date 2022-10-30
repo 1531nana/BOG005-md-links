@@ -34,8 +34,6 @@ const mockStats = {
   Broken: 1
 }
 
-// const mockError = throw Error("Debe ingresar una ruta")
-
 module.exports = {
   mockMdlinksFalse,
   mockMdlinksTrue,
