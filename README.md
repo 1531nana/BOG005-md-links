@@ -15,15 +15,15 @@ la información que se quiere compartir.
 ![md-links](https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg)
 
 ## 2. Diagrama de flujo de la ruta
-![path](https://github.com/1531nana/BOG005-md-links/blob/propietaria/DiagramaPath.jpg)
+<img src="./DiagramaPath1.png"  >
+<img src="./DiagramaPath2.png" width='435px' >
 
 ## 2.1 Diagrama de flujo del CLI
-![CLI](https://github.com/1531nana/BOG005-md-links/blob/propietaria/DiagramaCLI.jpg)
-
+<img src="./DiagramaCLI.png" >
 
 ## 3. Plan de acción
 Este plan de acción estuvo enfocado en minimizar los problemas planteados, con estimaciones de tiempo para mayor eficacia. Y fue elaborada en el projects de GitHub, permitiendo una sincronización de la planificación con el proyecto sobre el cual estaba trabajando.
-![planeación](https://github.com/1531nana/BOG005-md-links/blob/propietaria/planeaci%C3%B3n.jpg)
+<img src="./planning.png" >
 
 ## 1. Consideraciones técnicas
 Esta librería recibe una ruta absoluta o relativa con archivos markdown, para así extraer los links y verificar si están rotos o no. También muestra una estadística respecto a todos los links encontrados, como la cantidad total , los que están rotos y los únicos(links que no se repiten en el/los archivo/s). 
