@@ -15,15 +15,15 @@ la información que se quiere compartir.
 ![md-links](https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg)
 
 ## 2. Diagrama de flujo de la ruta
-<img src="./DiagramaPath1.png"  >
-<img src="./DiagramaPath2.png" width='435px' >
+<img src="./resources/DiagramaPath1.png"  >
+<img src="./resources/DiagramaPath2.png" >
 
 ## 2.1 Diagrama de flujo del CLI
-<img src="./DiagramaCLI.png" >
+<img src="./resources/DiagramaCLI.png" >
 
 ## 3. Plan de acción
 Este plan de acción estuvo enfocado en minimizar los problemas planteados, con estimaciones de tiempo para mayor eficacia. Y fue elaborada en el projects de GitHub, permitiendo una sincronización de la planificación con el proyecto sobre el cual estaba trabajando.
-<img src="./planning.png" >
+<img src="./resources/planning.png" >
 
 ## 1. Consideraciones técnicas
 Esta librería recibe una ruta absoluta o relativa con archivos markdown, para así extraer los links y verificar si están rotos o no. También muestra una estadística respecto a todos los links encontrados, como la cantidad total , los que están rotos y los únicos(links que no se repiten en el/los archivo/s). 
