@@ -8,8 +8,10 @@ const {
   mockDirecMdlinksTrue,
 } = require("../__mocks__/mockDirec.js");
 
+
 const pathAbsolute = "C:\\Users\\1531n\\BOG005-md-links\\test\\pruebaTest.md";
 const pathRelative = "../test/carpeta2";
+
 
 describe("mdLinks", () => {
   it("should be a path absolute with href, text and file", () => {
@@ -18,7 +20,7 @@ describe("mdLinks", () => {
     });
   });
 
-  it("should be a path absolute with href, text and file", () => {
+  it("should be a path absolute with href, text, file, status and statusText", () => {
     return mdLinks(pathAbsolute, { validate: true }).then((data) => {
       expect(data).toStrictEqual(mockMdlinksTrue);
     });
@@ -28,13 +30,13 @@ describe("mdLinks", () => {
 describe("mdLinks", () => {
   it("should be a path relative with href, text and file", () => {
     return mdLinks(pathRelative, { validate: false }).then((data) => {
-      expect(data).toStrictEqual(mockDirecMdlinksFalse);
+      expect(data).toEqual(mockDirecMdlinksFalse);
     });
   });
 
-  it("should be a path relative with href, text and file", () => {
+  it("should be a path relative with href, text  file, status and statusText", () => {
     return mdLinks(pathRelative, { validate: true }).then((data) => {
-      expect(data).toStrictEqual(mockDirecMdlinksTrue);
+      expect(data).toEqual(mockDirecMdlinksTrue);
     });
   });
 });

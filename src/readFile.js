@@ -5,7 +5,7 @@ let fileRead = (newPath) => {
   let acum = [];
   return Promise.all(
     newPath.map((link) => {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         fs.readFile(link, "utf8", (err, data) => {
           if (err) {
             throw ((Error = "Hubo un error"), err.message);

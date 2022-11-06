@@ -1,7 +1,7 @@
 let stat = (arg) => {
   let links = [];
   let linksBroken = [];
-  arg.map((resul) => {
+  arg.forEach((resul) => {
     if (resul.statusText === "Fail") {
       linksBroken.push(resul.statusText);
     }

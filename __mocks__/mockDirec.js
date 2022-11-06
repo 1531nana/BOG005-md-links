@@ -30,5 +30,6 @@ const mockDirecMdlinksFalse = [
   
  module.exports = {
     mockDirecMdlinksFalse,
-    mockDirecMdlinksTrue
+    mockDirecMdlinksTrue, 
  }
+
