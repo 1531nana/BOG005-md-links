@@ -6,7 +6,7 @@ const pathRelative = "../test/carpeta2";
 
 
 describe("stats", () => {
-    it("should be a stadistic of total, unique, broken", () => {
+    it("should be a stadistic of links with total, unique and broken ", () => {
       return mdLinks(pathRelative, { validate: true }).then((data) => {
         expect(stat(data)).toEqual(mockStats);
       });

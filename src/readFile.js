@@ -4,9 +4,9 @@ const { readLinks, readText } = require("./readLinks.js");
 let fileRead = (newPath) => {
   let acum = [];
   return Promise.all(
-    newPath.map((link) => {
+    newPath.map((file) => {
       return new Promise((resolve) => {
-        fs.readFile(link, "utf8", (err, data) => {
+        fs.readFile(file, "utf8", (err, data) => {
           if (err) {
             throw ((Error = "Hubo un error"), err.message);
           } else {
@@ -17,7 +17,7 @@ let fileRead = (newPath) => {
                   archivo = {
                     href: res.map((link) => link[i].slice(0, 51)),
                     text: ele[i].slice(1, ele[i].indexOf("]")),
-                    file: link,
+                    file: file,
                   };
                   acum.push(archivo);
                 }
@@ -30,6 +30,7 @@ let fileRead = (newPath) => {
     })
   );
 };
+
 
 module.exports = {
   readFile: fileRead,

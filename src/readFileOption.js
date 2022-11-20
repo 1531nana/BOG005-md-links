@@ -1,17 +1,17 @@
 const fetch = require("node-fetch");
 
 let readFileOptions = (newPath) => {
-  let iteraLink = newPath.map((link) => {
-    return fetch(link.href)
-      .then((result) => {
-        if (result.status >= 200 && result.status < 400) {
-          link["status"] = result.status;
-          link["statusText"] = result.statusText;
-          return link;
-        } else if (result.status >= 400) {
-          link["status"] = result.status;
-          link["statusText"] = "Fail";
-          return link;
+  let iteraLink = newPath.map((file) => {
+    return fetch(file.href)
+      .then((link) => {
+        if (link.status >= 200 && link.status < 400) {
+          file["status"] = link.status;
+          file["statusText"] = link.statusText;
+          return file;
+        } else if (link.status >= 400) {
+          file["status"] = link.status;
+          file["statusText"] = "Fail";
+          return file;
         }
       })
       .catch((error) => {
